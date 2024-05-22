@@ -1,0 +1,40 @@
+<%- include('partials/header') %>
+    <div class="regForm">
+        <form action="/register" method="post" class="form-signin">
+            <div class="center">
+                <img class="d-none d-md-block" src="/img/logo.png" alt="logo"
+                    style="height: 50px; width: 50px; padding:0%; margin:0%;">
+            </div>
+            <div class="center">
+                <h1 class="h3 mb-3 fw-normal">Please Register</h1>
+            </div>
+            <% if(message !='' ){ %>
+                <div class="alert alert-danger" role="alert">
+                    <%=message%>
+                </div>
+                <% } %>
+                    <div class="form-floating">
+                        <input type="email" class="form-control" name="username" style="margin-bottom: -1px; border-bottom-right-radius: 0;
+                border-bottom-left-radius: 0;" placeholder="name@example.com" required>
+                        <label for="username">Email address</label>
+                    </div>
+                    <div class="form-floating">
+                        <input type="password" class="form-control" name="password"
+                            style="margin-bottom: -1px; margin-top: -1px; border-radius:0; -webkit-text-security: disc"
+                            placeholder="Password" required>
+                        <label for="password">Password</label>
+                    </div>
+                    <div class="form-floating">
+                        <input type="password" class="form-control" name="confirmPassword" style="margin-top: -1px; border-top-left-radius: 0;
+                    border-top-right-radius: 0;-webkit-text-security: disc" placeholder="Confirm Password" required>
+                        <label for="confirmPassword">Confirm Password</label>
+                    </div>
+                    <div class="checkbox mb-3">
+                        <label>
+                            <input type="checkbox" value="remember-me"> Remember me
+                        </label>
+                    </div>
+                    <button class="w-100 btn btn-lg btn-outline-secondary" type="submit">Register</button>
+        </form>
+    </div>
+    <%- include('partials/footer') %>

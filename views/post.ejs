@@ -1,0 +1,112 @@
+<%- include('partials/header') %>
+    <div class="container">
+        <div class="row ml-0" style="margin-left: 0px;">
+            <div class="col-md-8 mb-3 blog-main bg-light rounded">
+                <h3 class="pb-3 mt-3 font-italic border-bottom">
+                    Article
+                </h3>
+                <div class="blog-post">
+                    <div class="mb-4">
+                        <h1 class="fw-bolder mb-1">
+                            <%=data.postTitle%>
+                        </h1>
+                        <div class="text-muted fst-italic mb-2">Posted on <%=data.date.toLocaleDateString()%> by
+                                <%=data.postAuthor%>
+                        </div>
+                        <a class="badge bg-secondary text-decoration-none link-light" href="/<%=data.category%>">
+                            <%=data.category%>
+                        </a>
+                    </div>
+                    <figure class="mb-4"><img class="img-fluid rounded" src="../img/<%=data.postImg%>" alt="Post image">
+                    </figure>
+                    <article>
+                        <div>
+                            <%-data.postContext%>
+                        </div>
+                    </article>
+                </div>
+                <hr>
+                <section class="mb-5">
+                    <div class="card bg-light">
+                        <div class="card-body">
+                            <form action="/post" method="post" class="mb-4">
+                                <input class="form-control mb-3" type="text" name="commenter"
+                                    placeholder="Enter your name here." required>
+                                <textarea class="form-control mb-2" rows="3" name="comment"
+                                    placeholder="Join the discussion and leave a comment!" required></textarea>
+                                <div style="display: flex; justify-content: end;">
+                                    <button class=" btn btn-secondary mx-1" type="submit">Submit</button>
+                                </div>
+                                <input type="text" name="postTitle" value="<%=data.postTitle%>" hidden>
+                            </form>
+                            <!--forech loop-->
+                            <%data.comment.forEach(e=> {%>
+                                <%if(e.commenter==='' && e.comment==='' ){%>
+                                    <%}else{%>
+                                        <div class="d-flex m-2">
+                                            <div class="flex-shrink-0"><img class="rounded-circle" src="../img/user.jpg"
+                                                    alt="img" style="height: 50px; width: 50px;">
+                                            </div>
+                                            <div class="ms-3">
+                                                <div class="fw-bold">
+                                                    <%=e.commenter%>
+                                                </div>
+                                                <p>
+                                                    <%=e.comment%>
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <%}%>
+                                            <%})%>
+                                                <!--forech loop end-->
+                        </div>
+                    </div>
+                </section>
+            </div>
+            <aside class="col-md-4 blog-sidebar">
+                <div class="p-3 mb-3 bg-light rounded">
+                    <h4 class="font-italic">About</h4>
+                    <p class="mb-0">This is a sample blog format.
+                        All data is for educational purposes.</p>
+                </div>
+                <div class=" bg-light rounded">
+                    <div class="p-3 ">
+                        <h4 class="font-italic">Latest News</h4>
+                        <ol class="list-unstyled mb-0">
+                            <li><a href="/posts/<%=last10[0]%>">
+                                    <%=last10[0]%>
+                                </a></li>
+                            <li><a href="/posts/<%=last10[1]%>">
+                                    <%=last10[1]%>
+                                </a></li>
+                            <li><a href="/posts/<%=last10[2]%>">
+                                    <%=last10[2]%>
+                                </a></li>
+                            <li><a href="/posts/<%=last10[3]%>">
+                                    <%=last10[3]%>
+                                </a></li>
+                            <li><a href="/posts/<%=last10[4]%>">
+                                    <%=last10[4]%>
+                                </a></li>
+                            <li><a href="/posts/<%=last10[5]%>">
+                                    <%=last10[5]%>
+                                </a></li>
+                            <li><a href="/posts/<%=last10[6]%>">
+                                    <%=last10[6]%>
+                                </a></li>
+                            <li><a href="/posts/<%=last10[7]%>">
+                                    <%=last10[7]%>
+                                </a></li>
+                            <li><a href="/posts/<%=last10[8]%>">
+                                    <%=last10[8]%>
+                                </a></li>
+                            <li><a href="/posts/<%=last10[9]%>">
+                                    <%=last10[9]%>
+                                </a></li>
+                        </ol>
+                    </div>
+                </div>
+            </aside>
+        </div>
+    </div>
+    <%- include('partials/footer') %>

@@ -1,0 +1,91 @@
+<%- include('partials/header') %>
+    <div class="container">
+        <div class="jumbotron p-5 mb-2 text-white rounded front">
+            <div class="col-md-6 ">
+                <h1 class="display-4 font-italic">Contact</h1>
+                <p class="lead my-3">If you would like to contact us or would like to contribute to site reach us with
+                    links bellow.</p>
+            </div>
+        </div>
+
+        <div class="container m-0 p-0">
+            <div class="row ml-0" style="margin-left: 0px;">
+                <div class="col-md-8 mb-3 blog-main bg-light rounded">
+                    <hr class="pb-3 mt-3">
+                    <div class="blog-post">
+                        <div class="mb-4">
+
+                            <h3>Contact</h3>
+                            <p>Feel free to get in touch. You can reach us on our social media accounts bellow.</p>
+                            <hr class="pb-3 mb-3">
+                            <h3>Advertising / Guest posts</h3>
+                            <p>We don’t accept guest posts or sponsored posts, All advertising inquiries are ignored.
+                            </p>
+                            <hr class="pb-3 mb-3">
+                            <h3>Other</h3>
+                            <p>Complaints, takedown notices, data removal, and other issues can be directed at our
+                                social media accounts.</p>
+                            <ul class="nav justify-content-center border-bottom pb-3 mb-3">
+
+                                <li class="nav-item"><a href="#" class="nav-link px-2 text-muted"> <i
+                                            class="bi bi-facebook"></i>
+                                        Facebook</a></li>
+
+                                <li class="nav-item"><a href="#" class="nav-link px-2 text-muted"><i
+                                            class="bi bi-instagram"></i>
+                                        Instagram</a></li>
+
+                                <li class="nav-item"><a href="#" class="nav-link px-2 text-muted"><i
+                                            class="bi bi-twitter"></i> Twitter</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <aside class="col-md-4 blog-sidebar">
+                    <div class="p-3 mb-3 bg-light rounded">
+                        <h4 class="font-italic">About</h4>
+                        <p class="mb-0">This is a sample blog format.
+                            All data is for educational purposes.</p>
+                    </div>
+                    <div class=" bg-light rounded">
+                        <div class="p-3 ">
+                            <h4 class="font-italic">Latest News</h4>
+                            <ol class="list-unstyled mb-0">
+                                <li><a href="/posts/<%=last10[0]%>">
+                                        <%=last10[0]%>
+                                    </a></li>
+                                <li><a href="/posts/<%=last10[1]%>">
+                                        <%=last10[1]%>
+                                    </a></li>
+                                <li><a href="/posts/<%=last10[2]%>">
+                                        <%=last10[2]%>
+                                    </a></li>
+                                <li><a href="/posts/<%=last10[3]%>">
+                                        <%=last10[3]%>
+                                    </a></li>
+                                <li><a href="/posts/<%=last10[4]%>">
+                                        <%=last10[4]%>
+                                    </a></li>
+                                <li><a href="/posts/<%=last10[5]%>">
+                                        <%=last10[5]%>
+                                    </a></li>
+                                <li><a href="/posts/<%=last10[6]%>">
+                                        <%=last10[6]%>
+                                    </a></li>
+                                <li><a href="/posts/<%=last10[7]%>">
+                                        <%=last10[7]%>
+                                    </a></li>
+                                <li><a href="/posts/<%=last10[8]%>">
+                                        <%=last10[8]%>
+                                    </a></li>
+                                <li><a href="/posts/<%=last10[9]%>">
+                                        <%=last10[9]%>
+                                    </a></li>
+                            </ol>
+                        </div>
+                    </div>
+                </aside>
+            </div>
+        </div>
+        <%- include('partials/footer') %>

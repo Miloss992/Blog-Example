@@ -1,0 +1,161 @@
+<%- include('partials/header') %>
+    <div class="container">
+        <div class="jumbotron p-5 mb-2 text-white rounded" style="background-image: url('../img/header.jpg');">
+            <div class="col-md-6 ">
+                <h1 class="display-4 font-italic">Search</h1>
+                <p class="lead my-3">Search results for: <%=search%>
+                </p>
+            </div>
+        </div>
+        <div class="container m-0 p-0">
+            <div class="row ml-0" style="margin-left: 0px;">
+                <div class="col-md-8 mb-3 blog-main bg-light rounded">
+                    <hr class="pb-3 mt-3">
+                    <div class="blog-post">
+                        <div class="mb-4">
+                            <%result.forEach(e=> {%>
+                                <div class="col-md-12 mt-3 ">
+                                    <div class="card flex-md-row mb-4 box-shadow h-md-250">
+                                        <div class="card-body d-flex flex-column align-items-start">
+                                            <h3 class="mb-0">
+                                                <h3 class="fw-bolder mb-1">
+                                                    <%=e.postTitle%>
+                                                </h3>
+                                                <div class="text-muted fst-italic mb-2">
+                                                    <%=e.date.toLocaleDateString()%> by <a href="#">
+                                                            <%=e.postAuthor%>
+                                                        </a>
+                                                </div>
+                                                <a class="badge bg-secondary text-decoration-none link-light"
+                                                    href="/<%=e.category%>">
+                                                    <%=e.category%>
+                                                </a>
+                                                <p class="card-text mb-auto text-overflow">
+                                                    <%-e.postContext.substring(0, 150) %> ...
+                                                </p>
+                                                <a href="/posts/<%=e.postTitle %>">Continue
+                                                    reading</a>
+                                        </div>
+                                        <div class="card-img-right flex-auto d-none d-lg-block"
+                                            style="background-image: url('../img/<%=e.postImg%>'); background-position: center;">
+                                        </div>
+                                    </div>
+                                </div>
+                                <%})%>
+                                    <hr>
+                                    <%if (totalDocs < 5) {%>
+                                        <form action="/search" method="post">
+                                            <nav class="blog-pagination">
+                                                <button class="btn btn-secondary mx-1" type="submit" name="prevPage"
+                                                    value="previous" disabled>Previous</button>
+                                                <button class="btn btn-outline-secondary" disabled>Page:
+                                                    <%=page%>
+                                                </button>
+                                                <button class=" btn btn-secondary mx-1" type="submit" name="nextPage"
+                                                    value="next" disabled>Next</button>
+                                            </nav>
+                                            <input type="text" value="<%=search%>" name="search" hidden>
+                                            <input type="text" value="<%=page%>" name="page" hidden>
+                                        </form>
+                                        <% } else {%>
+                                            <%if(next){%>
+                                                <%if(prev){%>
+                                                    <form action="/search" method="post">
+                                                        <nav class="blog-pagination">
+                                                            <button class="btn btn-secondary mx-1" type="submit"
+                                                                name="prevPage" value="previous">Previous</button>
+                                                            <button class="btn btn-outline-secondary" disabled>Page:
+                                                                <%=page%>
+                                                            </button>
+                                                            <button class=" btn btn-secondary mx-1" type="submit"
+                                                                name="nextPage" value="next">Next</button>
+                                                        </nav>
+                                                        <input type="text" value="<%=search%>" name="search" hidden>
+                                                        <input type="text" value="<%=page%>" name="page" hidden>
+                                                    </form>
+                                                    <%}else{%>
+                                                        <form action="/search" method="post">
+                                                            <nav class="blog-pagination">
+                                                                <button class="btn btn-secondary mx-1" type="submit"
+                                                                    name="prevPage" disabled>Previous</button>
+                                                                <button class="btn btn-outline-secondary" disabled>Page:
+                                                                    <%=page%>
+                                                                </button>
+                                                                <button class=" btn btn-secondary mx-1" type="submit"
+                                                                    name="nextPage" value="next">Next</button>
+                                                            </nav>
+                                                            <input type="text" value="<%=search%>" name="search" hidden>
+                                                            <input type="text" value="<%=page%>" name="page" hidden>
+                                                        </form>
+                                                        <%}}else{%>
+                                                            <%if(prev){%>
+                                                                <form action="/search" method="post">
+                                                                    <nav class="blog-pagination">
+                                                                        <button class="btn btn-secondary mx-1"
+                                                                            type="submit" name="prevPage"
+                                                                            value="previous">Previous</button>
+                                                                        <button class="btn btn-outline-secondary"
+                                                                            disabled>Page:
+                                                                            <%=page%>
+                                                                        </button>
+                                                                        <button class=" btn btn-secondary mx-1"
+                                                                            type="submit" name="nextPage"
+                                                                            disabled>Next</button>
+                                                                    </nav>
+                                                                    <input type="text" value="<%=search%>" name="search"
+                                                                        hidden>
+                                                                    <input type="text" value="<%=page%>" name="page"
+                                                                        hidden>
+                                                                </form>
+                                                                <%}}%>
+                                                                    <%}%>
+                        </div>
+                    </div>
+                </div>
+                <aside class="col-md-4 blog-sidebar">
+                    <div class="p-3 mb-3 bg-light rounded">
+                        <h4 class="font-italic">About</h4>
+                        <p class="mb-0">This is a sample blog format.
+                            All data is for educational purposes.</p>
+                    </div>
+                    <div class=" bg-light rounded">
+                        <div class="p-3 ">
+                            <h4 class="font-italic">Latest News</h4>
+                            <ol class="list-unstyled mb-0">
+                                <li><a href="/posts/<%=last10[0]%>">
+                                        <%=last10[0]%>
+                                    </a></li>
+                                <li><a href="/posts/<%=last10[1]%>">
+                                        <%=last10[1]%>
+                                    </a></li>
+                                <li><a href="/posts/<%=last10[2]%>">
+                                        <%=last10[2]%>
+                                    </a></li>
+                                <li><a href="/posts/<%=last10[3]%>">
+                                        <%=last10[3]%>
+                                    </a></li>
+                                <li><a href="/posts/<%=last10[4]%>">
+                                        <%=last10[4]%>
+                                    </a></li>
+                                <li><a href="/posts/<%=last10[5]%>">
+                                        <%=last10[5]%>
+                                    </a></li>
+                                <li><a href="/posts/<%=last10[6]%>">
+                                        <%=last10[6]%>
+                                    </a></li>
+                                <li><a href="/posts/<%=last10[7]%>">
+                                        <%=last10[7]%>
+                                    </a></li>
+                                <li><a href="/posts/<%=last10[8]%>">
+                                        <%=last10[8]%>
+                                    </a></li>
+                                <li><a href="/posts/<%=last10[9]%>">
+                                        <%=last10[9]%>
+                                    </a></li>
+                            </ol>
+                        </div>
+                    </div>
+                </aside>
+            </div>
+        </div>
+        <%- include('partials/footer') %>
