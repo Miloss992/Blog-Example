@@ -24,7 +24,7 @@ Clone the project
 Go to the project directory
 
 ```bash
-  cd Dashboard
+  cd Blog-Example
 ```
 
 Install dependencies
